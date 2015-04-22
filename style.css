@@ -1,0 +1,51 @@
+body {
+  text-align: center;
+  font-family: Arial;
+}
+.wrapper {  	  
+	position: relative;
+	top: 100px;
+  display: inline-block;
+}
+#random_generator {
+	color: #fff;
+  background-color: #009bde;
+  padding: 20px;
+  font-weight: bold;
+  margin: 0 auto;
+  display: block;
+  font-size: 1.5em;
+  cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 3px;
+}
+img.geeky {
+  width: 290px;
+  display: inline-block;
+  vertical-align: top;
+}
+.right-col {
+  vertical-align: top;
+  display: inline-block;
+  background-color: #009bde;
+  color: white;
+  width: 300px;
+  min-height: 300px;
+  padding: 30px;
+}
+#output {
+  margin-top: 20px;
+}
+.user {    
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.tweet {
+  text-align: left;
+}
+.ness-logo {
+  width: 50px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}

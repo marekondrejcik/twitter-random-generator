@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>twitter</title>
+</head>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<body>
+  <div class="wrapper">
+    <img class="geeky" src="geeky.jpg">
+    <div class="right-col">
+		  <button id="random_generator">Generate winner</button>
+		  <div id="output"></div>
+      <img class="ness-logo" src="ness-logo.jpg">
+    </div>
+	</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>	
+<script type="text/javascript">
+  
+  var users = [];
+
+  // get all tweets with specified hashtag
+  $.ajax({  
+	  dataType: "json",
+	  url: "http://tukegeeky.zuzankovo.com/?q=%23ness&count=100",	  
+	  success: function(data) {
+      findUsers(data);
+      $('#random_generator').css('background-color', '#0F7AA8');
+    }
+	});
+
+  // save tweet authors to users array
+  function findUsers(data) {
+  	console.log('statuses: ' + data.statuses.length);
+  	for (i = 0; i < data.statuses.length; i++) {
+  		var user = {'id': data.statuses[i].user.id, 'name': data.statuses[i].user.name, 'text': data.statuses[i].text}
+  		users.push(user);
+  	}
+  }
+
+  // select user randomly from user array, then delete selected user from array
+  function selectRandom() {
+  	var randomIndex = Math.floor(Math.random()*users.length)
+  	var randomUser = users[randomIndex];
+
+  	$('#output').html("<div class='user'>" + users[randomIndex].name + "</div><br><div class='tweet'>" + users[randomIndex].text + "</div>");
+
+  	users.splice(parseInt(randomIndex), 1);
+
+  } 
+
+  // generate winner button listener
+  document.getElementById("random_generator").addEventListener("click", selectRandom);
+
+</script>
+</body>
+</html>
